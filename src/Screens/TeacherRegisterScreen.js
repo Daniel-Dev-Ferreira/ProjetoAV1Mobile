@@ -1,50 +1,48 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Image, SafeAreaView } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 function CustomHeader({title, isHome, navigation}){
     return(
-      <View style={{flexDirection: 'row', height: 60}}>
-        <View style={{flex: 1, justifyContent: 'center'}}>
+      <View style={{flexDirection: 'row', height: 50, padding: 10, marginTop: 15}}>
         {
           isHome?
   
-          <TouchableOpacity onPress={ () => navigation.openDrawer()}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
           <Image style={{width: 30, height: 30, marginLeft: 5}} 
           source={require('../../assets/menu.png')} 
           resizeMode="contain" />
-          </TouchableOpacity>
-          : 
-          <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', marginTop: 8}}
-           onPress={() => navigation.goBack()}>
-               <Image style={{width: 20, height: 20, marginLeft: 5, marginTop: 10, paddingTop: 10}}
-               source={require('../../assets/left-arrow.png')} />
-           </TouchableOpacity> 
-        }
         </View>
+        : 
+         <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', marginTop: 8}}
+         onPress={() => navigation.goBack()}>
+             <Image style={{width: 20, height: 20, marginLeft: 5}}
+             source={require('../../assets/left-arrow.png')} />
+         </TouchableOpacity>   
+        }
         <View style={{flex: 1.5, justifyContent:'center'}}>
-            <Text style={{textAlign: 'center', fontSize: 20, marginTop: 15}}>{title}</Text>
+            <Text style={{textAlign: 'center', fontSize: 20}}>{title}</Text>
         </View>
         <View style={{flex: 1}}></View>
       </View>
     )
   }
 
-const RegisterScreen = ({navigation}) => {
+const TeacherRegisterScreen = ({navigation}) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
       <CustomHeader title= "Register Page" isHome={false} navigation={navigation}/>
         <ScrollView style={styles.scroll}>
             <View style={styles.card}>
                 <View style={styles.card_header}>
-                    <Text style={{color: 'white', fontSize: 20}}>Form Student</Text>
+                    <Text style={{color: 'white', fontSize: 20}}>Form Teacher</Text>
                 </View>
                 <View style={styles.card_body}>
                     <Text style={styles.textInput}>Name:</Text>
                     <TextInput style={styles.input} />
                     <Text style={styles.textInput}>E-mail:</Text>
                     <TextInput style={styles.input} />
-                    <Text style={styles.textInput}>Enrollment:</Text>
+                    <Text style={styles.textInput}>CPF:</Text>
                     <TextInput style={styles.input} />
                     <Text style={styles.textInput}>Password:</Text>
                     <TextInput style={styles.input} /> 
@@ -58,7 +56,6 @@ const RegisterScreen = ({navigation}) => {
             
         </ScrollView>
         </SafeAreaView>
-        
     )
 };
 
@@ -132,4 +129,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default RegisterScreen;
+export default TeacherRegisterScreen;

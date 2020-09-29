@@ -1,12 +1,45 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+function CustomHeader({title, isHome, navigation}){
+    return(
+      <View style={{flexDirection: 'row', height: 70}}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
+        {
+          isHome?
+  
+          <TouchableOpacity onPress={ () => navigation.openDrawer()}>
+          <Image style={{width: 30, height: 30, marginLeft: 5}} 
+          source={require('../../assets/menu.png')} 
+          resizeMode="contain" />
+          </TouchableOpacity>
+          : 
+          <Text></Text>
+        }
+        </View>
+        <View style={{flex: 1.5, justifyContent:'center'}}>
+            <Text style={{textAlign: 'center', fontSize: 20}}>{title}</Text>
+        </View>
+        <View style={{flex: 1}}></View>
+      </View>
+    )
+  }
+
+  function NotificationsScreen({ navigation }) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button onPress={() => navigation.goBack()} title="Go back home" />
+      </View>
+    );
+  }
+
 const ProfileScreen = ( { navigation }) => {
     return (
+        <SafeAreaView style={{ flex: 1 }}>
+      <CustomHeader title= "Home" isHome={false} navigation={navigation}/>
         <View style={styles.container}>
-
             <Image style={styles.img} source={require('../../assets/logo.jpeg')} />
             <TouchableOpacity style={styles.btn} onPress={ () => navigation.navigate('Teacher')}>
                 <FontAwesome5 style={styles.icon} name="chalkboard-teacher" size={24} color="black">
@@ -25,6 +58,7 @@ const ProfileScreen = ( { navigation }) => {
             <Text style={styles.textEnd}>From</Text>
             <Text style={styles.textEnd2}>Unicarioca</Text>
         </View>
+        </SafeAreaView>
     )
 };
 
