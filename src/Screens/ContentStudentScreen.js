@@ -36,7 +36,7 @@ function CustomHeader({title, isHome, navigation}){
   function ContentStudent({navigation}) {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <CustomHeader title= "Senttings" isHome={true} navigation={navigation}/>
+        <CustomHeader title= "Content Student" isHome={true} navigation={navigation}/>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1E90FF'}}>
           <Text style={styles.text}>Content Studen</Text>
         </View>
